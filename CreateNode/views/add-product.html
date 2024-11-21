@@ -4,136 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Product</title>
-    <style>
-        /* General Styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f9f9f9;
-            color: #333;
-        }
-
-        header, main {
-            padding: 1rem;
-        }
-
-        a {
-            text-decoration: none;
-            color: #333;
-            transition: color 0.3s ease;
-        }
-
-        a:hover, 
-        a.active {
-            color: #007bff;
-        }
-
-        button {
-            font: inherit;
-            border: 1px solid #007bff;
-            color: white;
-            background: #007bff;
-            border-radius: 5px;
-            padding: 0.5rem 1rem;
-            cursor: pointer;
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
-
-        button:hover {
-            background-color: #0056b3;
-        }
-
-        /* Header Styles */
-        .main-header {
-            background-color: #007bff;
-            padding: 0.75rem 1.5rem;
-        }
-
-        .main-header-nav {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .main-header-item-list {
-            list-style: none;
-            display: flex;
-        }
-
-        .main-header-item {
-            margin-right: 1.5rem;
-        }
-
-        .main-header-item:last-child {
-            margin-right: 0;
-        }
-
-        .main-header-item a {
-            font-size: 1rem;
-            font-weight: 600;
-            color: white;
-        }
-
-        .main-header-item a:hover,
-        .main-header-item a:active {
-            color: #ffcd39;
-        }
-
-        .main-header-item a.active {
-            color: #ffcd39;
-            border-bottom: 2px solid #ffcd39;
-        }
-
-        /* Form Styles */
-        main {
-            margin-top: 2rem;
-        }
-
-        .product-form {
-            background: white;
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            width: 25rem;
-            max-width: 90%;
-            margin: 2rem auto;
-        }
-
-        .form-control {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-control label {
-            display: block;
-            font-size: 1rem;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-        }
-
-        .form-control input {
-            width: 100%;
-            padding: 0.75rem;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 1rem;
-            transition: border-color 0.3s ease;
-        }
-
-        .form-control input:focus {
-            border-color: #007bff;
-            outline: none;
-        }
-
-        button {
-            display: inline-block;
-            width: 100%;
-        }
-    </style>
+    <link rel="stylesheet" href="/css/product.css">
 </head>
 <body>
     <!-- Header -->
@@ -148,7 +19,7 @@
 
     <!-- Main Content -->
     <main>
-        <form class="product-form" action="/add-product" method="POST">
+        <form class="product-form" action="/admin/add-product" method="POST">
             <div class="form-control">
                 <label for="title">Product Title:</label>
                 <input type="text" name="title" id="title" placeholder="Enter product title" required>
