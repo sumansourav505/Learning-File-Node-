@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const contactController = require('../controllers/contactController');
+const contactController = require('../controllers/success');
 
 // Display the contact form (GET request)
 router.get('/contactus', contactController.getContactForm);

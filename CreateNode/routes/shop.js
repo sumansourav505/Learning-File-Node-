@@ -1,10 +1,11 @@
-// routes/shop.js
+const path = require('path');
+
 const express = require('express');
+
 const productsController = require('../controllers/products');
 
 const router = express.Router();
 
-// GET /
-router.get('/', productsController.getShop);
+router.get('/', productsController.getProducts);
 
 module.exports = router;
