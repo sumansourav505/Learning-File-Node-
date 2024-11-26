@@ -9,6 +9,22 @@ exports.getProducts = (req, res, next) => {
     });
   });
 };
+exports.getProduct = (req, res, next) => {
+  const prodId = req.params.productId;
+  Product.findById(prodId, product => {
+    if (!product) {
+      // Handle the case where the product is not found
+      return res.redirect('/products'); // Optional: Redirect or show an error page
+    }
+    res.render('shop/product-detail', {
+      product: product,
+      pageTitle: product.title,
+      path: '/products'
+    });
+  });
+};
+
+
 
 exports.getIndex = (req, res, next) => {
   Product.fetchAll(products => {
