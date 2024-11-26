@@ -1,33 +1,26 @@
-const express = require('express');
 const path = require('path');
-const welcomeRoutes = require('./routes/welcome');
-const adminRoutes = require('./routes/admin');
-const shopRoutes = require('./routes/shop');
-const contactRoutes = require('./routes/contactus');
-const errorRoutes = require('./routes/error');
+
+const express = require('express');
+const bodyParser = require('body-parser');
+
+const errorController = require('./controllers/error');
 
 const app = express();
-const port = 3000;
 
-// Middleware for form data parsing
-app.use(express.urlencoded({ extended: false }));
+app.set('view engine', 'ejs');
+app.set('views', 'views');
 
-// Serve static files (CSS, images, etc.)
+const adminRoutes = require('./routes/admin');
+const shopRoutes = require('./routes/shop');
+
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Routes
-app.use('/', welcomeRoutes);
 app.use('/admin', adminRoutes);
-app.use('/shop', shopRoutes);
-app.use('/contact', contactRoutes);  // Correctly mounts the contact routes
-app.use('/error', errorRoutes);
+app.use(shopRoutes);
 
-// Catch-all route for 404 errors
-app.use((req, res) => {
-  res.status(404).send('Page Not Found');
-});
+app.use(errorController.get404);
 
-// Start the server
-app.listen(port, () => {
-  console.log(`Server running on http://localhost:${port}`);
+app.listen(3000,()=>{
+    console.log(`server running on http://localhost:3000/`)
 });
