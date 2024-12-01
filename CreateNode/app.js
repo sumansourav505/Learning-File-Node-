@@ -55,7 +55,8 @@ Cart.belongsToMany(Product, { through: CartItem });
 Product.belongsToMany(Cart, { through: CartItem });
 
 // Sync database and start the server
-sequelize.sync({force:true}) // Removed { force: true } for data persistence
+sequelize.//sync({force:true}) // Removed { force: true } for data persistence
+  sync()
   .then(() => {
     return User.findByPk(1);
   })
@@ -67,10 +68,13 @@ sequelize.sync({force:true}) // Removed { force: true } for data persistence
     return user;
   })
   .then(user => {
-    console.log('User initialized:', user.name); // Optional logging
+    // console.log('User initialized:', user.name); // Optional logging
+    return user.createCart();
+  })
+  .then(cart=>{
     app.listen(3000, () => {
-      console.log('Server running on http://localhost:3000/');
-    });
+        console.log('Server running on http://localhost:3000/');
+      });
   })
   .catch(err => {
     console.error('Error initializing the application:', err);
