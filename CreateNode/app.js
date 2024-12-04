@@ -58,7 +58,8 @@ Cart.belongsTo(User);
 Cart.belongsToMany(Product, { through: CartItem });
 Product.belongsToMany(Cart, { through: CartItem });
 Order.belongsTo(User);
-User.belongsToMany(Product,{through:OrderItem});
+User.hasMany(Order);
+Order.belongsToMany(Product,{through:OrderItem});
 
 // Sync database and start the server
 sequelize.//sync({force:true}) 
