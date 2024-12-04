@@ -1,24 +1,32 @@
 <%- include('../includes/head.ejs') %>
-    </head>
+ <link rel="stylesheet" href="/css/order.css"> <!--Link to custom CSS -->
+</head>
 
-    <body>
-        <%- include('../includes/navigation.ejs') %>
-        <main>
+<body>
+    <%- include('../includes/navigation.ejs') %>
+    <main class="container my-5">
+        <div class="text-center">
             <% if (orders.length <= 0) { %>
-                <h1>Nothing there!</h1>
+                <h1 class="text-danger">Nothing there!</h1>
             <% } else { %>
-                <ul>
+                <h2 class="mb-4">Your Orders</h2>
+                <ul class="list-group">
                     <% orders.forEach(order => { %>
-                        <li>
-                            <h1># <%= order.id %></h1>
-                            <ul>
+                        <li class="list-group-item mb-3">
+                            <h3 class="order-id">Order #<%= order.id %></h3>
+                            <ul class="list-unstyled ms-3">
                                 <% order.products.forEach(product => { %>
-                                    <li><%= product.title %> (<%= product.orderItem.quantity %>)</li>
+                                    <li>
+                                        <strong><%= product.title %></strong> 
+                                        <span class="badge bg-primary ms-2">x<%= product.orderItem.quantity %></span>
+                                    </li>
                                 <% }); %>
                             </ul>
                         </li>
                     <% }); %>
                 </ul>
             <% } %>
-        </main>
-        <%- include('../includes/end.ejs') %>
+        </div>
+    </main>
+    <%- include('../includes/end.ejs') %>
+</body>
