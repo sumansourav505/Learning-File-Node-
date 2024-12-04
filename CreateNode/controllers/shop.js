@@ -103,9 +103,11 @@ exports.getOrders = (req, res, next) => {
   });
 };
 exports.postOrder=(req,res,next)=>{
+  let fetchedCart;
   req.user
   .getCart()
   .then(cart=>{
+    fetchedCart=cart;
     return cart.getProducts();
 
   })
@@ -117,7 +119,7 @@ exports.postOrder=(req,res,next)=>{
       }));
     })
     .then(()=>{
-      req.user.getCart().then(cart=>cart.setProducts([]));
+      fetchedCart.setProducts(null);
     }).then(result=>{
       res.redirect('/orders');
     }).catch(err=>console.log(err));
